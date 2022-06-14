@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nodejs-demo
+  name: nodejs-demo
+  namespace: default
+spec:
+  replicas: 3
+  minReadySeconds: 45
+  selector:
+    matchLabels:
+      app: nodejs-demo
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: nodejs-demo
+    spec:
+      containers:
+      - image: ankittiwaridws/nodejsdemo:0.1
+        imagePullPolicy: Always
+        name: nodejs-demo
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nodejs-demo
+  name: nodejs-demo
+  namespace: default
+spec:
+  ports:
+  - nodePort: 32208
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: nodejs-demo
+  sessionAffinity: None
+  type: LoadBalancer
