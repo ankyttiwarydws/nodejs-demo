@@ -3,6 +3,7 @@ pipeline {
   environment {
 imagename = "ankittiwaridws/dem:1"
 dockerImage = ''
+registryCredential = 'dockerhub'
   }
   tools {
     nodejs 'node'
@@ -24,7 +25,7 @@ dockerImage = ''
     stage('DockerHub Push'){
             steps{
                     script {
-                    docker.withRegistry( '', dockerhub ) {
+                    docker.withRegistry( '', registryCredential ) {
                     dockerImage.push("$BUILD_NUMBER")
                     }
                     }
