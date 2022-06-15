@@ -24,7 +24,7 @@ dockerImage = ''
     stage('DockerHub Push'){
             steps{
                     script {
-                    docker.withRegistry( '', registryCredential ) {
+                    docker.withRegistry( '', dockerhub ) {
                     dockerImage.push("$BUILD_NUMBER")
                     }
                     }
