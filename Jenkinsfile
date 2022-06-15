@@ -30,7 +30,7 @@ registryCredential = 'dockerhub'
                     dockerImage.push("1")
                     }
                     }
-                    sh 'docker push ankittiwaridws/demo:1'
+                    
                 }
             }
         }
