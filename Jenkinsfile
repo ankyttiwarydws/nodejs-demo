@@ -5,7 +5,7 @@ imagename = "ank/dem"
 dockerImage = ''
   }
   tools {
-    node 'node'
+    nodejs 'node'
     dockerTool 'docker'
   }
   stages {
