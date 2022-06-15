@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-imagename = "ankittiwaridws/dem:1"
+imagename = "ankittiwaridws/dem"
 dockerImage = ''
 registryCredential = 'dockerhub'
   }
@@ -26,7 +26,7 @@ registryCredential = 'dockerhub'
             steps{
                     script {
                     docker.withRegistry( '', registryCredential ) {
-                    dockerImage.push("$BUILD_NUMBER")
+                    dockerImage.push("1")
                     }
                     }
                     sh 'docker push ankittiwaridws/demo:1'
