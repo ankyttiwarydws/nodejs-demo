@@ -36,7 +36,7 @@ registryCredential = 'dockerhub'
 	  stage('Quality_Gate') {
 	   steps {
 	    timeout(time: 3, unit: 'MINUTES') {
-		  waitForQualityGate abortPipeline: true
+		  waitForQualityGate abortPipeline: false
         }
       }
     }
@@ -63,7 +63,6 @@ registryCredential = 'dockerhub'
       steps{
         sh 'kubectl apply -f deployment.yaml'
         sh 'kubectl apply -f service.yaml'
-        sh 'echo http://`kubectl --namespace=${namespace} get service/${feSvcName} --output=json | jq -r '.status.loadBalancer.ip'` > ${feSvcName}'
       }
     }
   }
