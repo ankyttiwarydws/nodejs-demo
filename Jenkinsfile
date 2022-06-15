@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-imagename = "ank/dem"
+imagename = "ankittiwaridws/dem:1"
 dockerImage = ''
   }
   tools {
@@ -23,8 +23,11 @@ dockerImage = ''
     }
     stage('DockerHub Push'){
             steps{
-                withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
-                    sh 'docker login -u ankittiwaridws -p ${dockerhub}'
+                    script {
+                    docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push("$BUILD_NUMBER")
+                    }
+                    }
                     sh 'docker push ankittiwaridws/demo:1'
                 }
             }
