@@ -23,24 +23,6 @@ registryCredential = 'dockerhub'
         sh 'npm install'
       }
     }
-     stage('SonarQube_Analysis') {
-      steps {
-	    script {
-          scannerHome = tool 'sonar-scanner'
-        }
-        withSonarQubeEnv('sonar') {
-      	  sh """${scannerHome}/bin/sonar-scanner"""
-        }
-      }	
-    }	
-	  stage('Quality_Gate') {
-	   steps {
-	    timeout(time: 3, unit: 'MINUTES') {
-		  waitForQualityGate abortPipeline: false
-        }
-      }
-    }
-
     stage('DockerBuilderPublisher'){
       steps{
        script {
