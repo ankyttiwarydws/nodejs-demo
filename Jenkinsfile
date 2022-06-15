@@ -24,10 +24,11 @@ registryCredential = 'dockerhub'
         }
     }
     stage('DockerHub Push'){
-            steps{
-                    script {
-                    docker.withRegistry( '', registryCredential ) {
-                    dockerImage.push("1")
+      steps{
+       script {
+         docker.withRegistry( '', registryCredential ) {
+         dockerImage.push('1')
+         dockerImage.push('latest')
                     }
                     }
                     
