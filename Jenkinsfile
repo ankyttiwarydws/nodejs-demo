@@ -1,8 +1,9 @@
 pipeline {
   agent any
   environment {
-imagename = "ankittiwaridws/dem"
-dockerImage = ''
+    registry = "ankittiwaridws/demo"
+    imagename = "ankittiwaridws/dem"
+    dockerImage = ''
 registryCredential = 'dockerhub'
   }
   tools {
