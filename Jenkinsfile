@@ -28,7 +28,7 @@ registryCredential = 'dockerhub'
 	    script {
           scannerHome = tool 'sonar-scanner'
         }
-        withSonarQubeEnv('sonar') {
+        withSonarQubeEnv('sonarserver') {
       	  sh """${scannerHome}/bin/sonar-scanner"""
         }
       }	
